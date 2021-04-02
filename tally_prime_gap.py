@@ -11,7 +11,7 @@ some_primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53,
                401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463,
                467, 479, 487, 491, 499, 503, 509, 521, 523, 541}
 
-def miller_rabin_pass(a, s, d, n):
+def miller_rabin_pass(a: int, s: int, d: int, n: int) -> bool:
     a_to_power = pow(a, d, n)
     if a_to_power == 1:
         return True
@@ -21,7 +21,7 @@ def miller_rabin_pass(a, s, d, n):
         a_to_power = (a_to_power * a_to_power) % n
     return a_to_power == n - 1
 
-def primality_test(n):
+def primality_test(n: int) -> bool:
     '''
     For miller rabin
     if n < 1,373,653 it is enough to test a = 2 and 3;
@@ -59,7 +59,7 @@ def primality_test(n):
     return True
 
 
-def count_prime_gaps_per_chunk(chunk_start, chunk_end):
+def count_prime_gaps_per_chunk(chunk_start: int, chunk_end: int) -> Counter:
     if chunk_start % 2 == 0:
         chunk_start  += 1
     # Find Previous Prime First:
